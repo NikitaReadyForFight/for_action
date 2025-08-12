@@ -1,0 +1,16 @@
+name: Gtest_installation
+on:
+  workflow_dispatch:
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: GoogleTest
+      run: |
+        sudo apt -y update
+        sudo apt -y install libgtest-dev
+        cd /usr/src/gtest
+        sudo cmake CMakeLists.txt
+        sudo make
+        sudo cp lib/*.a /usr/lib
+      shell: bash
