@@ -1,0 +1,14 @@
+name: image-factory-astemo-poc-dpg-mvp-vector-wb-build-googletest like
+description: "Install and setting GoogleTest"
+runs:
+  using: composite
+  steps:
+    - name: GoogleTest
+      run: |
+        sudo apt -y update
+        sudo apt -y install libgtest-dev
+        cd /usr/src/gtest
+        sudo cmake CMakeLists.txt
+        sudo make
+        sudo cp lib/*.a /usr/lib
+      shell: bash
